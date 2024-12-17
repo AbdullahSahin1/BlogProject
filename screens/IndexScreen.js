@@ -6,7 +6,6 @@ export default function IndexScreen() {
   const { state, addBlogPost } = useContext(Context);
   return (
     <View>
-      {/* <Text>IndexScreen </Text> */}
       <Button title="Ekle" onPress={addBlogPost} />
       <FlatList
         data={state}
@@ -18,5 +17,4 @@ export default function IndexScreen() {
     </View>
   );
 }
-
 const styles = StyleSheet.create({});
