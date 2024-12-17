@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer } from 'react';
 
 export default (reducer, actions, initialState) => {
   const Context = React.createContext();
@@ -9,6 +9,7 @@ export default (reducer, actions, initialState) => {
     for (let key in actions) {
       boundActions[key] = actions[key](dispatch);
     }
+    //action==={addBlogPost:(dispatch) =>{return ()= {}}}
     return (
       <Context.Provider value={{ state, ...boundActions }}>
         {children}
@@ -17,4 +18,3 @@ export default (reducer, actions, initialState) => {
   };
   return { Context, Provider };
 };
-
