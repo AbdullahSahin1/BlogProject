@@ -1,18 +1,18 @@
-import React, { useContext } from 'react';
-import { StyleSheet, View,Text } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { useContext } from 'react';
 import { Context } from '../context/BlogContext';
-const ShowScreen = ({route}) => {
-    const {state} = useContext(Context);
-   
-    const blogPost = state.find((blogPost)=>blogPost.id === route.params.id)
-    return (
-        <View>
-            <Text>{blogPost.title}</Text>
-        </View>
-    );
+
+export default function ShowScreen({ route }) {
+  const { state } = useContext(Context);
+  console.log(route.params.id);
+  const blogPost = state.find((blogPost) => blogPost.id === route.params.id);
+  return (
+    <View>
+      <Text>{blogPost.title}</Text>
+      <Text>{blogPost.content}</Text>
+    </View>
+  );
 }
 
-const styles = StyleSheet.create({})
-
-export default ShowScreen;
-
+const styles = StyleSheet.create({});
