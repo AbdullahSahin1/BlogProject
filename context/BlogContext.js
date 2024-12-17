@@ -1,18 +1,30 @@
-import React, {useState} from 'react';
+import React, { useState, useReducer } from 'react';
 
 const BlogContext = React.createContext();
 
-export const BlogProvider = ({ children }) => {
-  const [blogpost, setBlogpost] = useState([
-    {title: 'React Native'},
-    {title: 'Javascirpt'}
-  ])
-  const addBlogPost = () => {
-    setBlogpost([...blogPosts,{title:'Flutter'}])
+const blogReducer = (state, action) => {
+  switch (action.type) {
+    case 'add_blogpost':
+      return [...state, { title: 'Vue Js' }];
+    default:
+      return state;
   }
-  const blogPosts = [{ title: 'React Native' }, { title: 'Javascript' }];
+};
+
+export const BlogProvider = ({ children }) => {
+  const [blogPosts, dispatch] = useReducer(blogReducer, [
+    { title: 'React Native' },
+    { title: 'Javascript' },
+  ]);
+
+  const addBlogPost = () => {
+    dispatch({ type: 'add_blogpost' });
+  };
+
   return (
-    <BlogContext.Provider value={{data:blogPosts,addBlogPost}}>{children}</BlogContext.Provider>
+    <BlogContext.Provider value={{ data: blogPosts, addBlogPost }}>
+      {children}
+    </BlogContext.Provider>
   );
 };
 
