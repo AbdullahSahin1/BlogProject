@@ -1,36 +1,42 @@
-import React, { useState, useReducer } from "react";
-import CreateDataContext from "./CreateDataContext";
+import React, { useState, useReducer } from 'react';
+import createDataContext from './createDataContext';
 
 const blogReducer = (state, action) => {
   switch (action.type) {
-    case "add_blogpost":
+    case 'add_blogpost':
       return [
         ...state,
         {
-          id: Math.floor(Math.random()*999),
-          title: "Vue Js",
+          id: Math.floor(Math.random() * 999999),
+          title: action.payload.title,
+          content: action.payload.content,
         },
       ];
-      case "delete_blogpost":
-      return state.filter ((blogPost)=>blogPost.id !== action.payload)
+
+    case 'delete_blogpost':
+      return state.filter((blogPost) => blogPost.id !== action.payload);
     default:
       return state;
   }
 };
 
 const addBlogPost = (dispatch) => {
-  return () => {
-    dispatch({ type: "add_blogpost" });
+  return (title, content, callback) => {
+    dispatch({ type: 'add_blogpost', payload: { title, content } });
+    if (callback) {
+      callback();
+    }
+  };
+};
+const deleteBlogPost = (dispatch) => {
+  return (id) => {
+    dispatch({ type: 'delete_blogpost', payload: id });
   };
 };
 
-const deleteBlockPost = (dispatch) => {
-  return (id) => {
-    dispatch({ type: "delete_blogpost",payload: id });
-  };
-};
-export const { Context, Provider } = CreateDataContext(
+export const { Context, Provider } = createDataContext(
   blogReducer,
-  { addBlogPost,deleteBlockPost },
+  { addBlogPost, deleteBlogPost },
   []
 );
+
