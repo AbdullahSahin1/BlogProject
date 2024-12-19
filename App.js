@@ -9,6 +9,7 @@ import { Provider } from './context/BlogContext';
 import ShowScreen from './screens/ShowScreen';
 import { AntDesign } from '@expo/vector-icons';
 import EditScreen from './screens/EditScreen';
+import { EvilIcons } from '@expo/vector-icons';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -31,10 +32,14 @@ export default function App() {
           <Stack.Screen
             name="Show"
             component={ShowScreen}
-            options={({ navigation }) => ({
+            options={({ navigation, route }) => ({
               headerRight: () => (
-                <TouchableOpacity onPress={() => navigation.navigate('Edit')}>
-                  <AntDesign name="edit" size={24} color="black" />
+                <TouchableOpacity
+                  onPress={() =>
+                    navigation.navigate('Edit', { id: route.params.id })
+                  }
+                >
+                  <EvilIcons name="pencil" size={35} color="black" />
                 </TouchableOpacity>
               ),
             })}
