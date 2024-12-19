@@ -37,15 +37,23 @@ export default function IndexScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
+  mainRow: {
+    backgroundColor: "#D9B08C",
+   flex: 1,
+  },
   row: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    backgroundColor: "#748D92",
+    flexDirection: "row",
+    justifyContent: "space-between",
     borderTopWidth: 1,
     paddingHorizontal: 10,
-    paddingVertical: 20,
-    borderColor: 'gray',
+    paddingVertical: 30,
+    borderColor: "gray",
+    marginVertical: 20,
+    
   },
   title: {
     fontSize: 18,
+    color: '#fff',
   },
 });
