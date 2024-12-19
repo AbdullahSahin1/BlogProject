@@ -44,11 +44,15 @@ export default function BlogPostForm({ onSubmit, initialValues, isEditable }) {
 
 const styles = StyleSheet.create({
   main: {
-    marginTop: 10,
+    marginTop: 0,
+    backgroundColor: '#874F41',
+    flex: 1,
   },
   label: {
     fontSize: 20,
     marginLeft: 10,
+    color: '#fff',
+    textShadowColor: "#fff",
   },
   input: {
     borderWidth: 1,
@@ -57,19 +61,22 @@ const styles = StyleSheet.create({
     padding: 5,
     fontSize: 18,
     marginBottom: 15,
+    backgroundColor: "#FBE9D0",
+    color: '#000',
+    height: '15%',
   },
   buttonMain: {
     padding: 30,
   },
   buttonView: {
-    backgroundColor: "green",
+    backgroundColor: '#244855',
     padding: 10,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     borderRadius: 20,
   },
   buttonText: {
-    color: "white",
+    color: 'white',
     fontSize: 20,
   },
 });
