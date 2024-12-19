@@ -9,7 +9,7 @@ export default (reducer, actions, initialState) => {
     for (let key in actions) {
       boundActions[key] = actions[key](dispatch);
     }
-    //action==={addBlogPost:(dispatch) =>{return ()= {}}}
+   
     return (
       <Context.Provider value={{ state, ...boundActions }}>
         {children}
