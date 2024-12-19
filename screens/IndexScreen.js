@@ -5,10 +5,10 @@ import {
   FlatList,
   Button,
   TouchableOpacity,
-} from 'react-native';
-import React, { useContext } from 'react';
-import { Context } from '../context/BlogContext';
-import { Feather } from '@expo/vector-icons';
+} from "react-native";
+import React, { useContext } from "react";
+import { Context } from "../context/BlogContext";
+import { Feather } from "@expo/vector-icons";
 
 export default function IndexScreen({ navigation }) {
   const { state, addBlogPost, deleteBlogPost } = useContext(Context);
@@ -19,16 +19,18 @@ export default function IndexScreen({ navigation }) {
         keyExtractor={(blogPost) => blogPost.id}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity
-              onPress={() => navigation.navigate('Show', { id: item.id })}
-            >
-              <View style={styles.row}>
-                <Text style={styles.title}>{item.title}</Text>
-                <TouchableOpacity onPress={() => deleteBlogPost(item.id)}>
-                  <Feather name="trash" size={24} color="black" />
-                </TouchableOpacity>
-              </View>
-            </TouchableOpacity>
+            <View style={styles.mainRow}>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("Show", { id: item.id })}
+              >
+                <View style={styles.row}>
+                  <Text style={styles.title}>{item.title}</Text>
+                  <TouchableOpacity onPress={() => deleteBlogPost(item.id)}>
+                    <Feather name="trash" size={24} color="black" />
+                  </TouchableOpacity>
+                </View>
+              </TouchableOpacity>
+            </View>
           );
         }}
       />
@@ -39,7 +41,7 @@ export default function IndexScreen({ navigation }) {
 const styles = StyleSheet.create({
   mainRow: {
     backgroundColor: "#D9B08C",
-   flex: 1,
+    flex: 1,
   },
   row: {
     backgroundColor: "#748D92",
@@ -50,10 +52,9 @@ const styles = StyleSheet.create({
     paddingVertical: 30,
     borderColor: "gray",
     marginVertical: 20,
-    
   },
   title: {
     fontSize: 18,
-    color: '#fff',
+    color: "#fff",
   },
 });
